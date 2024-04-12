@@ -105,7 +105,7 @@ export default function Login() {
                   disabled={!isValidForm()}
                   onClick={handleLogin}
                 >
-                  {/* {componentLevelLoader && componentLevelLoader.loading ? (
+                  {componentLevelLoader && componentLevelLoader.loading ? (
                     <ComponentLevelLoader
                       text={"Logging In"}
                       color={"#ffffff"}
@@ -113,9 +113,9 @@ export default function Login() {
                         componentLevelLoader && componentLevelLoader.loading
                       }
                     />
-                  ) : ( */}
-                  "Login"
-                  {/* )} */}
+                  ) : (
+                    "Login"
+                  )}
                 </button>
                 <div className="flex flex-col gap-2">
                   <p>New to website ?</p>

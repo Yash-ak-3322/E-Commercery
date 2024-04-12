@@ -90,35 +90,33 @@ export default function Register() {
                 </button>
               ) : (
                 <div className="w-full mt-6 mr-0 mb-0 ml-0 relative space-y-8">
-                  {registrationFormControls.map(
-                    (controlItem) =>
-                      controlItem.componentType === "input" ? (
-                        <InputComponent
-                          type={controlItem.type}
-                          placeholder={controlItem.placeholder}
-                          label={controlItem.label}
-                          onChange={(event) => {
-                            setFormData({
-                              ...formData,
-                              [controlItem.id]: event.target.value,
-                            });
-                          }}
-                          value={formData[controlItem.id]}
-                        />
-                      ) : null
-                    // controlItem.componentType === "select" ? null : (
-                    //   <SelectComponent
-                    //     options={controlItem.options}
-                    //     label={controlItem.label}
-                    //     onChange={(event) => {
-                    //       setFormData({
-                    //         ...formData,
-                    //         [controlItem.id]: event.target.value,
-                    //       });
-                    //     }}
-                    //     value={formData[controlItem.id]}
-                    //   />
-                    // )
+                  {registrationFormControls.map((controlItem) =>
+                    controlItem.componentType === "input" ? (
+                      <InputComponent
+                        type={controlItem.type}
+                        placeholder={controlItem.placeholder}
+                        label={controlItem.label}
+                        onChange={(event) => {
+                          setFormData({
+                            ...formData,
+                            [controlItem.id]: event.target.value,
+                          });
+                        }}
+                        value={formData[controlItem.id]}
+                      />
+                    ) : controlItem.componentType === "select" ? null : (
+                      <SelectComponent
+                        options={controlItem.options}
+                        label={controlItem.label}
+                        onChange={(event) => {
+                          setFormData({
+                            ...formData,
+                            [controlItem.id]: event.target.value,
+                          });
+                        }}
+                        value={formData[controlItem.id]}
+                      />
+                    )
                   )}
                   <button
                     className=" disabled:opacity-50 inline-flex w-full items-center justify-center bg-black px-6 py-4 text-lg 
@@ -127,25 +125,23 @@ export default function Register() {
                     disabled={!isFormValid()}
                     onClick={handleRegisterOnSubmit}
                   >
-                    {" "}
-                    register{" "}
-                  </button>
-                  {/* {pageLevelLoader ? (
+                    {pageLevelLoader ? (
                       <ComponentLevelLoader
                         text={"Registering"}
                         color={"#ffffff"}
                         loading={pageLevelLoader}
                       />
-                    ) : ( */}
-
-                  {/* )} */}
+                    ) : (
+                      "Register"
+                    )}
+                  </button>
                 </div>
               )}
             </div>
           </div>
         </div>
       </div>
-      {/* <Notification /> */}
+      <Notification />
     </div>
   );
 }

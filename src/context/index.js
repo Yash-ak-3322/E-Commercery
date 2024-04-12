@@ -15,6 +15,7 @@ export default function GlobalState({ children }) {
   });
   const [isAuthUser, setIsAuthUser] = useState(null);
   const [user, setUser] = useState(null);
+  const [currentUpdatedProduct, setCurrentUpdatedProduct] = useState(null);
 
   useEffect(() => {
     if (Cookies.get("token") !== undefined) {
@@ -42,6 +43,8 @@ export default function GlobalState({ children }) {
         setUser,
         componentLevelLoader,
         setComponentLevelLoader,
+        currentUpdatedProduct,
+        setCurrentUpdatedProduct,
       }}
     >
       {children}
