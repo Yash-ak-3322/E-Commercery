@@ -21,19 +21,19 @@ export default function Orders() {
 
   async function extractAllOrders() {
     setPageLevelLoader(true);
+    console.log("user details : ", user);
     const res = await getAllOrdersForUser(user?._id);
 
-    if (res.success) {
+    if (res && res.success) {
       setPageLevelLoader(false);
-
       setAllOrdersForUser(res.data);
       toast.success(res.message, {
-        position: toast.POSITION.TOP_RIGHT,
+        position: "top-right",
       });
     } else {
       setPageLevelLoader(false);
-      toast.error(res.message, {
-        position: toast.POSITION.TOP_RIGHT,
+      toast.error((res && res.message) || "Failed to fetch orders", {
+        position: "top-right",
       });
     }
   }
