@@ -1,5 +1,5 @@
 import connectToDB from "@/database";
-// import AuthUser from "@/middleware/AuthUser";
+import AuthUser from "@/middleware/AuthUser";
 import Product from "@/models/product";
 import { NextResponse } from "next/server";
 
@@ -9,11 +9,11 @@ export async function PUT(req) {
   try {
     await connectToDB();
 
-    const isAuthUser = "admin";
+    const isAuthUser = await AuthUser(req);
     // await AuthUser(req);
 
-    // if (isAuthUser?.role === "admin") {
-    if (isAuthUser === "admin") {
+    if (isAuthUser?.role === "admin") {
+      // if (isAuthUser === "admin") {
       const extractData = await req.json();
       const {
         _id,

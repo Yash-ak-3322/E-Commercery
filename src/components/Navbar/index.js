@@ -6,7 +6,7 @@ import { Fragment, useContext, useEffect } from "react";
 import CommonModal from "../CommonModal";
 import Cookies from "js-cookie";
 import { usePathname, useRouter } from "next/navigation";
-// import CartModal from "../CartModal";
+import CartModal from "../CartModal";
 
 // const isAdminView = false;
 // const isAuthUser = true;
@@ -68,13 +68,13 @@ export default function Navbar() {
 
   console.log(currentUpdatedProduct, "navbar");
 
-  //   useEffect(() => {
-  //     if (
-  //       pathName !== "/admin-view/add-product" &&
-  //       currentUpdatedProduct !== null
-  //     )
-  //       setCurrentUpdatedProduct(null);
-  //   }, [pathName]);
+  useEffect(() => {
+    if (
+      pathName !== "/admin-view/add-product" &&
+      currentUpdatedProduct !== null
+    )
+      setCurrentUpdatedProduct(null);
+  }, [pathName]);
 
   function handleLogout() {
     setIsAuthUser(false);
@@ -200,7 +200,7 @@ export default function Navbar() {
         show={showNavModal}
         setShow={setShowNavModal}
       />
-      {/* {showCartModal && <CartModal />} */}
+      {showCartModal && <CartModal />}
     </>
   );
 }

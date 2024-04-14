@@ -1,21 +1,23 @@
 import mongoose from "mongoose";
 
-const NewAddressSchema = new mongoose.Schema(
+const CartSchema = new mongoose.Schema(
   {
     userID: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
-    fullName: String,
-    address: String,
-    city: String,
-    country: String,
-    postalCode: String,
+    productID: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Products",
+    },
+    quantity: {
+      type: Number,
+      required: true,
+      default: 1,
+    },
   },
   { timestamps: true }
 );
 
-const Address =
-  mongoose.models.Address || mongoose.model("Address", NewAddressSchema);
-
-export default Address;
+const Cart = mongoose.models.Cart || mongoose.model("Cart", CartSchema);
+export default Cart;

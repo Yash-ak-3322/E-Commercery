@@ -128,7 +128,7 @@ export default function AdminAddNewProduct() {
     if (res.success) {
       setComponentLevelLoader({ loading: false, id: "" });
       toast.success(res.message, {
-        position: "top-right",
+        position: toast.POSITION.TOP_RIGHT,
       });
 
       setFormData(initialFormData);
@@ -138,7 +138,7 @@ export default function AdminAddNewProduct() {
       }, 1000);
     } else {
       toast.error(res.message, {
-        position: "top-right",
+        position: toast.POSITION.TOP_RIGHT,
       });
       setComponentLevelLoader({ loading: false, id: "" });
       setFormData(initialFormData);
