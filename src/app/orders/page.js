@@ -3,19 +3,23 @@
 import Notification from "@/components/Notification";
 import { GlobalContext } from "@/context";
 import { getAllOrdersForUser } from "@/services/order";
+import { useAtom } from "jotai";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect } from "react";
 import { PulseLoader } from "react-spinners";
 import { toast } from "react-toastify";
+import { allOrdersForUserAtom } from "../lib/atoms";
 
 export default function Orders() {
   const {
     user,
     pageLevelLoader,
     setPageLevelLoader,
-    allOrdersForUser,
-    setAllOrdersForUser,
+    // allOrdersForUser,
+    // setAllOrdersForUser,
   } = useContext(GlobalContext);
+
+  const [allOrdersForUser, setAllOrdersForUser] = useAtom(allOrdersForUserAtom);
 
   const router = useRouter();
 

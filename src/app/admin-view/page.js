@@ -3,19 +3,25 @@
 import ComponentLevelLoader from "@/components/Loader/componentlevel";
 import { GlobalContext } from "@/context";
 import { getAllOrdersForAllUsers, updateStatusOfOrder } from "@/services/order";
+import { useAtom } from "jotai";
 import { useContext, useEffect } from "react";
 import { PulseLoader } from "react-spinners";
+import { allOrdersForAllUsersAtom } from "../lib/atoms";
 
 export default function AdminView() {
   const {
-    allOrdersForAllUsers,
-    setAllOrdersForAllUsers,
+    // allOrdersForAllUsers,
+    // setAllOrdersForAllUsers,
     user,
     pageLevelLoader,
     setPageLevelLoader,
     componentLevelLoader,
     setComponentLevelLoader,
   } = useContext(GlobalContext);
+
+  const [allOrdersForAllUsers, setAllOrdersForAllUsers] = useAtom(
+    allOrdersForAllUsersAtom
+  );
 
   async function extractAllOrdersForAllUsers() {
     setPageLevelLoader(true);

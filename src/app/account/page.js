@@ -15,19 +15,27 @@ import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import { PulseLoader } from "react-spinners";
 import { toast } from "react-toastify";
+import { useAtom } from "jotai";
+import { addressAtom, addressFormDataAtom } from "../lib/atoms";
 
 export default function Account() {
   const {
     user,
-    addresses,
-    setAddresses,
-    addressFormData,
-    setAddressFormData,
+    // addresses,
+    // setAddresses,
+    // addressFormData,
+    // setAddressFormData,
     componentLevelLoader,
     setComponentLevelLoader,
     pageLevelLoader,
     setPageLevelLoader,
   } = useContext(GlobalContext);
+
+  // const addresses = useAtomValue(addressAtom);
+  // const setAddresses = useSetAtom(addressAtom);
+
+  const [addresses, setAddresses] = useAtom(addressAtom);
+  const [addressFormData, setAddressFormData] = useAtom(addressFormDataAtom);
 
   const [showAddressForm, setShowAddressForm] = useState(false);
   const [currentEditedAddressId, setCurrentEditedAddressId] = useState(null);

@@ -11,16 +11,20 @@ import { useContext, useEffect, useState } from "react";
 import { PulseLoader } from "react-spinners";
 import { toast } from "react-toastify";
 import { Suspense } from "react";
+import { useAtom } from "jotai";
+import { addressAtom } from "../lib/atoms";
 
 export default function Checkout() {
   const {
     cartItems,
     user,
-    addresses,
-    setAddresses,
+    // addresses,
+    // setAddresses,
     checkoutFormData,
     setCheckoutFormData,
   } = useContext(GlobalContext);
+
+  const [addresses, setAddresses] = useAtom(addressAtom);
 
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [isOrderProcessing, setIsOrderProcessing] = useState(false);

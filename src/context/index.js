@@ -3,6 +3,8 @@
 import Cookies from "js-cookie";
 import { usePathname, useRouter } from "next/navigation";
 import { createContext, useEffect, useState } from "react";
+// import { atom } from "jotai";
+// import { useAtom } from "jotai";
 
 export const GlobalContext = createContext(null);
 
@@ -23,6 +25,8 @@ const protectedAdminRoutes = [
   "/admin-view/all-products",
 ];
 
+// const addressAtom = atom([]);
+
 export default function GlobalState({ children }) {
   const [showNavModal, setShowNavModal] = useState(false);
   const [pageLevelLoader, setPageLevelLoader] = useState(true);
@@ -35,22 +39,25 @@ export default function GlobalState({ children }) {
   const [currentUpdatedProduct, setCurrentUpdatedProduct] = useState(null);
   const [showCartModal, setShowCartModal] = useState(false);
   const [cartItems, setCartItems] = useState([]);
-  const [addresses, setAddresses] = useState([]);
-  const [addressFormData, setAddressFormData] = useState({
-    fullName: "",
-    city: "",
-    country: "",
-    postalCode: "",
-    address: "",
-  });
+
+  // const [addresses, setAddresses] = useState([]);
+  // const [addresses, setAddresses] = useAtom(addressAtom);
+
+  // const [addressFormData, setAddressFormData] = useState({
+  //   fullName: "",
+  //   city: "",
+  //   country: "",
+  //   postalCode: "",
+  //   address: "",
+  // });
 
   const [checkoutFormData, setCheckoutFormData] = useState(
     initialCheckoutFormData
   );
 
-  const [allOrdersForUser, setAllOrdersForUser] = useState([]);
-  const [orderDetails, setOrderDetails] = useState(null);
-  const [allOrdersForAllUsers, setAllOrdersForAllUsers] = useState([]);
+  // const [allOrdersForUser, setAllOrdersForUser] = useState([]);
+  // const [orderDetails, setOrderDetails] = useState(null);
+  // const [allOrdersForAllUsers, setAllOrdersForAllUsers] = useState([]);
 
   const router = useRouter();
   const pathName = usePathname();
@@ -110,18 +117,18 @@ export default function GlobalState({ children }) {
         setShowCartModal,
         cartItems,
         setCartItems,
-        addresses,
-        setAddresses,
-        addressFormData,
-        setAddressFormData,
+        // addresses,
+        // setAddresses,
+        // addressFormData,
+        // setAddressFormData,
         checkoutFormData,
         setCheckoutFormData,
-        allOrdersForUser,
-        setAllOrdersForUser,
-        orderDetails,
-        setOrderDetails,
-        allOrdersForAllUsers,
-        setAllOrdersForAllUsers,
+        // allOrdersForUser,
+        // setAllOrdersForUser,
+        // orderDetails,
+        // setOrderDetails,
+        // allOrdersForAllUsers,
+        // setAllOrdersForAllUsers,
       }}
     >
       {children}

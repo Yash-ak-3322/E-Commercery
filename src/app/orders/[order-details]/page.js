@@ -1,7 +1,10 @@
 "use client";
 
+import { orderDetailsAtom } from "@/app/lib/atoms";
 import { GlobalContext } from "@/context";
 import { getOrderDetails } from "@/services/order";
+import { useAtom } from "jotai";
+import { useAmp } from "next/amp";
 import { useParams, useRouter } from "next/navigation";
 import { useContext, useEffect } from "react";
 import { PulseLoader } from "react-spinners";
@@ -10,10 +13,12 @@ export default function OrderDetails() {
   const {
     pageLevelLoader,
     setPageLevelLoader,
-    orderDetails,
-    setOrderDetails,
+    // orderDetails,
+    // setOrderDetails,
     user,
   } = useContext(GlobalContext);
+
+  const [orderDetails, setOrderDetails] = useAtom(orderDetailsAtom);
 
   const params = useParams();
   const router = useRouter();
