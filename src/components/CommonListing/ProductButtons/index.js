@@ -106,7 +106,7 @@ export default function ProductButton({ item }) {
             loading={componentLevelLoader && componentLevelLoader.loading}
           />
         ) : (
-          "Add To Cart"
+          "Adding to Favorites"
         )}
       </button>
     </>
